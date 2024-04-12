@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8667918212264614856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227155605315155272}
+  - component: {fileID: 7378596759256000567}
+  - component: {fileID: 285963611253891424}
+  - component: {fileID: 9015236603920207529}
+  - component: {fileID: -2696188302214596541}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &227155605315155272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667918212264614856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7378596759256000567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667918212264614856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b449b185f8758a4e9fafedfdd316bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  playerT: {fileID: 0}
+  playerX: 0
+  playerY: 0
+  score: 0
+  difficulty: 1
+  jammed: 0
+  systemOnline: 0
+  gunsOn: 0
+  gunsOff: 1
+  alive: 1
+--- !u!114 &285963611253891424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667918212264614856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6784cd8d2863df74287228bac84a78a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawnTime: 2.5
+  spawnEnemy: 0
+  jammerSpawnTime: 15
+  spawnJammer: 0
+  stalkerSpawnTime: 15
+  spawnStalker: 0
+  attackerSpawnTime: 15
+  spawnAttacker: 0
+  boss1AttackSpawnTime: 10
+  spawnBoss1Attack: 0
+  laserSpawnTime: 10
+  spawnLaser: 0
+  nukeSpawnTime: 10
+  spawnNuke: 0
+  EnemyLeft: {fileID: 1089868701677804049, guid: 6e34a5d51fd47a4449d8dba3415aa346, type: 3}
+  EnemyRight: {fileID: 1089868701677804049, guid: 82f222635e33deb45a7ea2a8c5149a95, type: 3}
+  JammerLeft: {fileID: 1089868701677804049, guid: 6640348cda957564f82129b0c01355a9, type: 3}
+  JammerRight: {fileID: 1089868701677804049, guid: 7483653a949c13d42a40676f7296e63f, type: 3}
+  StalkerLeft: {fileID: 1089868701677804049, guid: 83fac8a951137924a889bdb1843bbd42, type: 3}
+  StalkerRight: {fileID: 1089868701677804049, guid: 06ab474d026ec0746a4171060c27ca22, type: 3}
+  AttackerLeft: {fileID: 1089868701677804049, guid: 36ffaeca4f26406419a8861dd84be972, type: 3}
+  AttackerRight: {fileID: 1089868701677804049, guid: 087d8de48d6309e42b9dccb15de0c370, type: 3}
+  boss1Attack: {fileID: 5039474709067919171, guid: 52c992247145f954aa2337d54702df0c, type: 3}
+  Laser: {fileID: 6860023730496546969, guid: ef1cd3e9084803449afb30f093a8fd62, type: 3}
+  Nuke: {fileID: 3862513807172833558, guid: c6545e649acb49049b173ed4e9543643, type: 3}
+--- !u!114 &9015236603920207529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667918212264614856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9553605388c7644a4890e4ba305024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  timeText: {fileID: 0}
+  xText: {fileID: 0}
+  yText: {fileID: 0}
+  gunsOnText: {fileID: 0}
+  busrtText: {fileID: 0}
+  gunsHeatText: {fileID: 0}
+  airBreakText: {fileID: 0}
+  lockedOnText: {fileID: 0}
+  warningText: {fileID: 0}
+  incommingText: {fileID: 0}
+  radarJamText: {fileID: 0}
+  signalLostText: {fileID: 0}
+  restartText: {fileID: 0}
+  mCamTf: {fileID: 0}
+--- !u!114 &-2696188302214596541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667918212264614856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2003d9ddd89bb146be5821788af0610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSound: {fileID: 8300000, guid: 18d6a007b013c9d4ebf7f7c44e1e5f06, type: 3}
+  overheatSound: {fileID: 8300000, guid: 0aa68a212282409478c4b0ed62e0ac62, type: 3}
+  enemyFireSound:
+  - {fileID: 8300000, guid: 5ff5bd936a30a904da907f35c8dd382e, type: 3}
+  - {fileID: 8300000, guid: 8154f5e18ea48164e9cb0132012cf432, type: 3}
+  - {fileID: 8300000, guid: e0894d72d41ebbe49b525ac71176337b, type: 3}
+  - {fileID: 8300000, guid: 5dbc74a65da58144aa0a20190bcd4909, type: 3}
+  - {fileID: 8300000, guid: de812cfb519929c4aad9d296f655c81d, type: 3}
+  - {fileID: 8300000, guid: 60a0682fbc82bd244bdae3f3445cfd17, type: 3}
+  - {fileID: 8300000, guid: e3298e35eed19c942b6f4d2d41cd21ba, type: 3}
+  - {fileID: 8300000, guid: b02661b1983843f4a8e25854215c13f1, type: 3}
+  - {fileID: 8300000, guid: ba5b9da8b3b9af742abfa0fd399e1a0f, type: 3}
+  - {fileID: 8300000, guid: 0c4f452a658af404d9e375bd5ee7bd63, type: 3}
+  - {fileID: 8300000, guid: e70eb034c8ae4fe42b00d809716998e4, type: 3}
+  lockedOn: 0
+  lockedOnSoundEnd: 1
+  warning: 0
+  warningSoundEnd: 1
+  exposionSound:
+  - {fileID: 8300000, guid: 8524588a69a4f3e40bb597b6221138f1, type: 3}
+  - {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+  - {fileID: 8300000, guid: c401d00c96b512e488d2e3bf5d111509, type: 3}
+  - {fileID: 8300000, guid: c2153dcd0edd22f40bdebf613271bae7, type: 3}
+  - {fileID: 8300000, guid: 8b3f676fe7b41044495a2964396b8ba3, type: 3}
+  - {fileID: 8300000, guid: f01c623f724825e44a923d1ae50256f2, type: 3}
+  - {fileID: 8300000, guid: fd706038486fee041947a774223dc22e, type: 3}
+  - {fileID: 8300000, guid: c1f8c36ebdb20024ea8a59ec457d582c, type: 3}
+  - {fileID: 8300000, guid: f0bba60dd1813bd40af826dbaa99b983, type: 3}
+  - {fileID: 8300000, guid: d4aee29185389894b9cc0d8873904a49, type: 3}
+  incommingSound: {fileID: 8300000, guid: 0669e398a86b8fd418aeddd083bbca19, type: 3}
+  laserSound: {fileID: 8300000, guid: 18d6a007b013c9d4ebf7f7c44e1e5f06, type: 3}
