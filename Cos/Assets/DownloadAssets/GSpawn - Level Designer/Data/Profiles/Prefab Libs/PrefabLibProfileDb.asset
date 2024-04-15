@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe82a2417215724a9be3166910ed92e, type: 3}
+  m_Name: PrefabLibProfileDb
+  m_EditorClassIdentifier: 
+  _profiles:
+  - {fileID: 11400000, guid: c1d0967ab9c5a714f8d08b148ad48c85, type: 2}
+  _activeProfile: {fileID: 11400000, guid: c1d0967ab9c5a714f8d08b148ad48c85, type: 2}
+  _prefabCreationSettingsUI: {fileID: 0}
+  _objectGroupCreationSettingsUI: {fileID: 0}
+--- !u!114 &4870561785938278436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d78f77521bb1424d90dc20b0de9cee3, type: 3}
+  m_Name: PrefabLibProfileDbUI_LibViewState
+  m_EditorClassIdentifier: 
+  selectedItems:
+    _serializedList:
+    - _guidString: ffa02ab3-3bfc-4299-a0cd-9adc97324f92
+  collapsedItems:
+    _serializedList: []
+  selectRangeBeginId:
+    _guidString: ffa02ab3-3bfc-4299-a0cd-9adc97324f92
+  selectRangeEndId:
+    _guidString: ffa02ab3-3bfc-4299-a0cd-9adc97324f92
+  hasSelectRange: 1
+  scrollOffset: {x: 0, y: 0}
+  vertScrollHighValue: 0
+  vertScrollLowValue: 0
+--- !u!114 &6639282158350277656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a9940f958e79347881876bc04c02dc, type: 3}
+  m_Name: PluginPrefabManagerUI_PrefabViewState
+  m_EditorClassIdentifier: 
+  selectedItems:
+    _serializedList:
+    - _guidString: bca28756-c50f-42ee-b1c5-766986f64583
+  selectRangeBeginId:
+    _guidString: bca28756-c50f-42ee-b1c5-766986f64583
+  selectRangeEndId:
+    _guidString: bca28756-c50f-42ee-b1c5-766986f64583
+  hasSelectRange: 1
+  scrollOffset: {x: 0, y: 0}
+  vertScrollHighValue: 421
+  vertScrollLowValue: 0

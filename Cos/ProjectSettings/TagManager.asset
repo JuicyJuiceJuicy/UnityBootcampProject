@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - DoorLock
+  - FxTemporaire
+  - Trap
+  - Smog
+  - Magic
+  - Enemy
+  - Boss
+  - Enhance
+  - Craft
+  - Light
+  - Item
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Minimap
+  - Minimapicon
+  - PostProcessing
+  - Interactable
+  - 
+  - Player
+  - Enemy
+  - PlayerMissile
+  - EnemyMissile
+  - NPC
+  - Boss
+  - BossMissile
+  - Object
+  - Floor
+  - Wall
+  - Void
+  - Gate
+  - Passage
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
