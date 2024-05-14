@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     {
         Vector3 movedir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
         transform.Translate(movedir * Time.deltaTime * speed0);
-
     }
 
     void AirBreak()

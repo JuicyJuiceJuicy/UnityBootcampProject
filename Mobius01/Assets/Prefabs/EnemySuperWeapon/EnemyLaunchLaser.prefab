@@ -148,6 +148,9 @@ MonoBehaviour:
   shake: 1
   damage: 1
   time: 0.5
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &8138287953426362994
 Animator:
   serializedVersion: 5

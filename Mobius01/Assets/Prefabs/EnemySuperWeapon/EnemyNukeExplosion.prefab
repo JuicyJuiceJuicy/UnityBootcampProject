@@ -103,6 +103,9 @@ MonoBehaviour:
   shake: 1
   damage: 1
   time: 0.5
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &8995507327975159832
 MonoBehaviour:
   m_ObjectHideFlags: 0
