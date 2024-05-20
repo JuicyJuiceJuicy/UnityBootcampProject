@@ -5,56 +5,73 @@ using UnityEngine;
 
 public class MouseInputSystem : MonoBehaviour
 {
-    private Camera camera;
+    private void Start()
+    {
+
+    }
+
+    private void Update()
+    {
+        MouseInputUpdate();
+    }
+
+    public float angleAdjust;
+    public float timeHoldAdjust;
 
     private Vector2 mousePosition;
 
     private Vector2 mousePositionDown;
-    private Vector2 mousePositionUp;
+    private Vector2 mousePositionDelta;
 
-    private Vector2 mouseSwipe;
-    private float mouseSwipeAngle;
+    private float mouseTimeHold;
+    private float mouseDistance;
+    private float mouseAngle;
 
-    void Start()
+    private void MouseInputUpdate()
     {
-        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-    }
-
-    void Update()
-    {
-        mousePosition = Input.mousePosition;
-
-        if (Input.GetMouseButton(0) == true)
+#if UNITY_STANDALONE_WIN //==================================================================================================================================================================================================
+        
+        if (Input.GetMouseButton(0) == true) //누른 상태
         {
-            Cursor.lockState = CursorLockMode.None;
-            
-            if (Input.GetMouseButtonDown(0) == true)
+            if (Input.GetMouseButtonDown(0) == true) // 누른 순간
             {
-                mousePositionDown = mousePosition;
+                Cursor.lockState = CursorLockMode.None;
+
+                mousePositionDown = Input.mousePosition;
+
+                mouseTimeHold = 0;                                  // 시간 초기화
+                mouseDistance = 0;                                  // 거리 초기화
+                mouseAngle = 0;                                     // 각도 초기화
             }
+
+            mousePosition = Input.mousePosition;
+            mousePositionDelta = mousePosition - mousePositionDown; // 벡터 변화량 갱신
+
+            mouseTimeHold += Time.deltaTime;                                                            // 시간 갱신
+            mouseDistance = mousePositionDelta.magnitude;                                               // 거리 갱신
+            mouseAngle = Mathf.Atan2(mousePositionDelta.y, mousePositionDelta.x) * Mathf.Rad2Deg;       // 각도 갱신
+
+            if (mouseAngle < 0)
+            {
+                mouseAngle += 360;
+            }
+
+
+
+
+
         }
-        else if (Input.GetMouseButtonUp(0) == true)
+        else if (Input.GetMouseButtonUp(0) == true) //뗀 순간
         {
-            mousePositionUp = mousePosition;
-            mouseSwipe = mousePositionUp - mousePositionDown;
-
-            float _mouseSwipeAngle = Mathf.Atan2(mouseSwipe.y, mouseSwipe.x) * Mathf.Rad2Deg;
-
-            if (0 < _mouseSwipeAngle)
-            {
-                mouseSwipeAngle = _mouseSwipeAngle;
-            }
-            else //(_mouseSwipeAngle < 0)
-            {
-                mouseSwipeAngle = _mouseSwipeAngle + 360;
-            }
-
-            Debug.Log(mouseSwipeAngle);
+            // 출력
+            Debug.Log($"Angle: {mouseAngle},Time: {mouseTimeHold}, Distance:{mouseDistance}");
         }
-        else //Input.GetMouseButton(0) == false
+        else //Input.GetMouseButton(0) == false // 누르지 않았을 때
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-        
+
+#elif UNITY_ANDROID //=======================================================================================================================================================================================================
+#endif
     }
 }
