@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 2021364183}
   - component: {fileID: 2021364182}
   m_Layer: 0
-  m_Name: MouseInput
+  m_Name: InputSystemManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
