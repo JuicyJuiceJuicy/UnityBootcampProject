@@ -8,6 +8,13 @@ using UnityEngine.UI;
 
 public class InputSystemManager : SingletonLazy<InputSystemManager>
 {
+    private void Awake()
+    {
+        mainCamera = GameObject.Find(cameraName).GetComponent<Camera>();
+        virtualController = GameObject.Find("VirtualController");
+        virtualController.SetActive(false);
+    }
+
     private void Start()
     {
         InputStart();
@@ -18,6 +25,11 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
         InputUpdate();
         InputStateDebugUpdate(inputState);
     }
+
+    public Camera MainCamera
+    { get => mainCamera; }
+    [SerializeField] Camera mainCamera;
+    [SerializeField] string cameraName;
 
     // InputStates ==========================================================================================================================================================================================================
 
@@ -56,10 +68,27 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
     private float timeHoldAdjust;
     private float timeSwipeHoldAdjust;
 
-    // 마우스 위치
-    private Vector2 mousePosition;
-    private Vector2 mousePositionDelta;
+    // 마우스 위치 화면좌표
+    public Vector2 MousePositionDown
+    { get => mousePositionDown; }
     private Vector2 mousePositionDown;
+
+    public Vector2 MousePosition
+    { get => mousePosition; }
+    private Vector2 mousePosition;
+
+    private Vector2 mousePositionDelta;
+
+    // 마우스 위치 월드좌표
+    public Vector2 MousePositionDownScreen
+    { get => mousePositionDownScreen; }
+    private Vector2 mousePositionDownScreen
+    { get => mainCamera.ScreenToWorldPoint(mousePositionDown); }
+
+    public Vector2 MousePositionScreen
+    { get => mousePositionScreen; }
+    private Vector2 mousePositionScreen
+    { get => mainCamera.ScreenToWorldPoint(mousePosition); }
 
     // 시간, 거리, 방향
     private float mouseTimeHold;
@@ -69,6 +98,8 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
     // 출력
     private InputState inputState;
     private InputDirection inputDirection;
+
+    [SerializeField] GameObject virtualController;
 
     private void InputStart()
     {
@@ -100,13 +131,15 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
                 mouseAngle = 0;                                     // 각도 초기화
 
                 mousePositionDown = Input.mousePosition;
+
+                virtualController.SetActive(true);
             }
 
             mousePositionDelta = mousePosition - mousePositionDown; // 벡터 변화량 갱신
 
             mouseTimeHold += Time.deltaTime;                                                                            // 시간 갱신
             mouseDistance = mousePositionDelta.magnitude;                                                               // 거리 갱신
-            mouseAngle = Mathf.Atan2(mousePositionDelta.y, mousePositionDelta.x) * Mathf.Rad2Deg + angleAdjust + 22.5f; // 각도 갱신
+            mouseAngle = Mathf.Atan2(mousePositionDelta.y, mousePositionDelta.x) * Mathf.Rad2Deg - angleAdjust + 22.5f; // 각도 갱신
 
             if (mouseAngle < 0)
             {
@@ -198,6 +231,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
 
             }
 
+            virtualController.SetActive(false);
             Debug.Log($"Angle: {mouseAngle},Time: {mouseTimeHold}, Distance:{mouseDistance}");
         }
         else //_isInput == false // 누르지 않은 상태
