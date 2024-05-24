@@ -33,7 +33,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
 
     // InputStates ==========================================================================================================================================================================================================
 
-    private enum InputState
+    public enum InputState
     {
         idle,
         push,
@@ -41,10 +41,11 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
         hold,
         holdSwipe,
         swipe,
+        swipeTab,
         swipeHold,
     }
 
-    private enum InputDirection
+    public enum InputDirection
     {
         neutral,
         right,
@@ -80,15 +81,11 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
     private Vector2 mousePositionDelta;
 
     // 마우스 위치 월드좌표
-    public Vector2 MousePositionDownScreen
-    { get => mousePositionDownScreen; }
-    private Vector2 mousePositionDownScreen
-    { get => mainCamera.ScreenToWorldPoint(mousePositionDown); }
+    public Vector2 MousePositionDownScreen { get => mousePositionDownScreen; }
+    private Vector2 mousePositionDownScreen { get => mainCamera.ScreenToWorldPoint(mousePositionDown); }
 
-    public Vector2 MousePositionScreen
-    { get => mousePositionScreen; }
-    private Vector2 mousePositionScreen
-    { get => mainCamera.ScreenToWorldPoint(mousePosition); }
+    public Vector2 MousePositionScreen { get => mousePositionScreen; }
+    private Vector2 mousePositionScreen { get => mainCamera.ScreenToWorldPoint(mousePosition); }
 
     // 시간, 거리, 방향
     private float mouseTimeHold;
@@ -96,6 +93,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
     private float mouseAngle;
 
     // 출력
+    public InputState CurrentInputState { get => inputState; }
     private InputState inputState;
     private InputDirection inputDirection;
 
@@ -124,7 +122,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
         {
             if (_isInputDown) // 누른 순간
             {
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.lockState = CursorLockMode.None;
 
                 mouseTimeHold = 0;                                  // 시간 초기화
                 mouseDistance = 0;                                  // 거리 초기화
@@ -228,7 +226,10 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
             }
             else //distanceAdjust < mouseDistance
             {
-
+                if (mouseTimeHold < timeSwipeHoldAdjust)
+                {
+                    inputState = InputState.swipeTab;
+                }
             }
 
             virtualController.SetActive(false);
@@ -236,7 +237,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
         }
         else //_isInput == false // 누르지 않은 상태
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
 
             inputState = InputState.idle;
             inputDirection = InputDirection.neutral;
