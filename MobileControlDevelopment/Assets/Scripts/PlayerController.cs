@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : CharacterController
 {
-    public Animator animator;
+
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -29,6 +29,19 @@ public class PlayerController : MonoBehaviour
                 break;
             case InputSystemManager.InputState.swipeTab:
                 animator.SetInteger("State", (int)CharacterState.dash);
+                break;
+        }
+
+        switch (InputSystemManager.Instance.CurrentInputDirection)
+        {
+            case InputSystemManager.InputDirection.neutral:
+                moveDirection = new Vector3(0, 0, 0);
+                break;
+            case InputSystemManager.InputDirection.right:
+                moveDirection = new Vector3(1, 0, 0);
+                break;
+            case InputSystemManager.InputDirection.left:
+                moveDirection = new Vector3(-1, 0, 0);
                 break;
         }
     }

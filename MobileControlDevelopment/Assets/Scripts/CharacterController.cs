@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    private enum State
-    {
-        idle,
-
-    }
-
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         
     }
+
+    public Animator animator;
+
+    public float speed;
+    public Vector3 moveDirection;
 }

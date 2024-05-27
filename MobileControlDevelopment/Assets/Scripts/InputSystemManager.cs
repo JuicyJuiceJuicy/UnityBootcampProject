@@ -95,6 +95,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
     // Ãâ·Â
     public InputState CurrentInputState { get => inputState; }
     private InputState inputState;
+    public InputDirection CurrentInputDirection {  get => inputDirection; }
     private InputDirection inputDirection;
 
     [SerializeField] GameObject virtualController;
