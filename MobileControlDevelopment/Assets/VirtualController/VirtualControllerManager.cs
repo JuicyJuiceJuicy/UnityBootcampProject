@@ -1,34 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 using UnityEngine.UI;
 
-public class InputSystemManager : SingletonLazy<InputSystemManager>
+public class VirtualControllerManager : SingletonLazy<VirtualControllerManager>
 {
     private void Awake()
     {
         mainCamera = GameObject.Find(cameraName).GetComponent<Camera>();
-        virtualController = GameObject.Find("VirtualController");
         virtualController.SetActive(false);
     }
 
     private void Start()
     {
         InputStart();
+        DebugStart();
     }
 
     private void Update()
     {
         InputUpdate();
-        InputStateDebugUpdate(inputState);
+        DebugUpdate(inputState);
     }
 
     public Camera MainCamera
     { get => mainCamera; }
-    [SerializeField] Camera mainCamera;
+    private Camera mainCamera;
     [SerializeField] string cameraName;
 
     // InputStates ==========================================================================================================================================================================================================
@@ -116,6 +112,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
 
         mousePosition = Input.mousePosition;
 
+        Cursor.lockState = CursorLockMode.Confined;
 #elif UNITY_ANDROID
 #endif
 
@@ -123,7 +120,7 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
         {
             if (_isInputDown) // 누른 순간
             {
-                //Cursor.lockState = CursorLockMode.None;
+                
 
                 mouseTimeHold = 0;                                  // 시간 초기화
                 mouseDistance = 0;                                  // 거리 초기화
@@ -234,26 +231,30 @@ public class InputSystemManager : SingletonLazy<InputSystemManager>
             }
 
             virtualController.SetActive(false);
-            Debug.Log($"Angle: {mouseAngle},Time: {mouseTimeHold}, Distance:{mouseDistance}");
+            // Debug.Log($"Angle: {mouseAngle},Time: {mouseTimeHold}, Distance:{mouseDistance}");
         }
         else //_isInput == false // 누르지 않은 상태
         {
-            //Cursor.lockState = CursorLockMode.Locked;
-
             inputState = InputState.idle;
             inputDirection = InputDirection.neutral;
         }
     }
 
-    // InputStateDebug ======================================================================================================================================================================================================
+    // Debug ======================================================================================================================================================================================================
+    [SerializeField] bool debug;
+    [SerializeField] GameObject debugCanvas;
+    [SerializeField] Text debugText;
 
-    [SerializeField] Text textStateDebug;
+    private void DebugStart()
+    {
+        debugCanvas.SetActive(debug);
+    }
 
-    private void InputStateDebugUpdate(InputState inputState)
+    private void DebugUpdate(InputState inputState)
     {
         if ((inputState == InputState.idle) == false)
         {
-            textStateDebug.text = inputState.ToString() + " " + inputDirection;
+            debugText.text = inputState.ToString() + " " + inputDirection;
         }
     }
 }
