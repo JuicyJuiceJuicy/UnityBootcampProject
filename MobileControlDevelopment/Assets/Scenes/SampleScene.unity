@@ -590,8 +590,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -601,7 +601,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &627916008
 BoxCollider2D:
@@ -676,11 +676,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7991280d620de9c4a9ad67636cb17672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 10
   moveDirection: {x: 0, y: 0, z: 0}
   moveDirectionX: 0
   moveDirectionY: 0
   animator: {fileID: 76592182}
+  collider: {fileID: 627916008}
+  heightOffset: 0
+  laycastDistance: 0
+  floorLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &916326818
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +742,15 @@ MonoBehaviour:
   moveDirectionX: 0
   moveDirectionY: 0
   animator: {fileID: 281503199}
+  collider: {fileID: 916326821}
+  heightOffset: 0
+  laycastDistance: 0
+  floorLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &916326821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -792,8 +810,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -803,7 +821,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &929009082
 GameObject:

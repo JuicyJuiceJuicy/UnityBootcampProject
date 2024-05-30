@@ -82,7 +82,22 @@ public class PlayerController : CharacterController
                 Attack();
                 break;
             case VirtualControllerManager.InputState.swipeTab:
-                Dodge();
+
+                SetInputDirection();
+
+                if (moveDirection.y == 0)
+                {
+                    Dodge();
+                }
+                else if (moveDirection.y == 1)
+                {
+                    Jump();
+                }
+                else //(moveDirection.y == -1)
+                {
+                    // 슬라이딩? 다운? 넉백? 원거리?
+                }
+                
                 break;
         }
     }

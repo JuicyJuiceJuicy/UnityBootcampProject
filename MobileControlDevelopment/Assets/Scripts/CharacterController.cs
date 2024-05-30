@@ -27,6 +27,27 @@ public class CharacterController : MonoBehaviour
 
     // GetComponent =========================================================================================================
     public Animator animator;
+    public BoxCollider2D collider;
+
+    // GroundCheck ==========================================================================================================
+    public float heightOffset;
+    [SerializeField] float laycastDistance;
+    [SerializeField] LayerMask floorLayerMask;
+    [SerializeField] LayerMask wallLayerMask;
+    
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (Physics2D.Raycast((Vector2)transform.position + new Vector2(collider.size.x * 0.5f, collider.size.y), Vector2.down, laycastDistance + collider.size.y, floorLayerMask)
+         || Physics2D.Raycast((Vector2)transform.position + new Vector2(collider.size.x * -0.5f, collider.size.y), Vector2.down, laycastDistance + collider.size.y, wallLayerMask))
+        {
+            animator.SetBool("isGround", true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        animator.SetBool("isGround", false);
+    }
 
     // MoveDirection ========================================================================================================
     protected virtual void MoveDirectionStart()
@@ -40,11 +61,11 @@ public class CharacterController : MonoBehaviour
     {
         animator.SetFloat("inputX", (int)moveDirection.x);
         animator.SetFloat("inputY", (int)moveDirection.y);
+    }
 
-        if (moveDirection.x != 0)
-        {
-            animator.SetFloat("inputDirection", (int)moveDirection.x);
-        }
+    protected virtual void SetInputDirection()
+    {
+        animator.SetFloat("inputDirection", (int)moveDirection.x);
     }
 
     // States ===============================================================================================================
@@ -78,7 +99,7 @@ public class CharacterController : MonoBehaviour
     // jump =================================================================================================================
     protected void Jump()
     {
-
+        animator.SetInteger("state", (int)CharacterState.jump);
     }
 
     // fall =================================================================================================================
