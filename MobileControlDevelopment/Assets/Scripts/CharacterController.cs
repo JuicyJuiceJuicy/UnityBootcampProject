@@ -27,18 +27,22 @@ public class CharacterController : MonoBehaviour
 
     // GetComponent =========================================================================================================
     public Animator animator;
-    public BoxCollider2D collider;
+    public CapsuleCollider2D collider;
 
     // GroundCheck ==========================================================================================================
     public float heightOffset;
     [SerializeField] float laycastDistance;
     [SerializeField] LayerMask floorLayerMask;
     [SerializeField] LayerMask wallLayerMask;
-    
+
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (Physics2D.Raycast((Vector2)transform.position + new Vector2(collider.size.x * 0.5f, collider.size.y), Vector2.down, laycastDistance + collider.size.y, floorLayerMask)
-         || Physics2D.Raycast((Vector2)transform.position + new Vector2(collider.size.x * -0.5f, collider.size.y), Vector2.down, laycastDistance + collider.size.y, wallLayerMask))
+        if(Physics2D.Raycast((Vector2)transform.position + new Vector2(0, collider.size.y), Vector2.left, laycastDistance + collider.size.x * 0.5f, wallLayerMask)
+        || Physics2D.Raycast((Vector2)transform.position + new Vector2(0, collider.size.y), Vector2.right, laycastDistance + collider.size.x * 0.5f, wallLayerMask))
+        {
+            animator.SetBool("isWall", true);
+        }
+        else if (Physics2D.Raycast((Vector2)transform.position + new Vector2(0, collider.size.y * 0.5f), Vector2.down, laycastDistance + collider.size.y * 0.5f, floorLayerMask))
         {
             animator.SetBool("isGround", true);
         }
